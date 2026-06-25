@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+# Kubernetes
+*.kubeconfig
+kubeconfig
+*.key
+*.crt
+*.csr
+*.pem
+*.p12
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Terraform
+.terraform/
+*.tfstate*
+
+# Temporary
+tmp/
+temp/
