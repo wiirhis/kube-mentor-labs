@@ -1,4 +1,4 @@
-# Correction – KM-LAB-002
+Correction – KM-LAB-002
 
 ## Objectifs atteints
 
