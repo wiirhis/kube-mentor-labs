@@ -1,0 +1,27 @@
+rhisland@srv-ks-master:~$ kubectl get ns | egrep 'kyverno|gatekeeper|policy|opa' || true
+gatekeeper-lab      Active   44h
+gatekeeper-system   Active   44h
+rhisland@srv-ks-master:~$ kubectl get crd | egrep 'kyverno|gatekeeper|constraints|policy' || true
+assign.mutations.gatekeeper.sh                       2026-06-23T23:34:22Z
+assignimage.mutations.gatekeeper.sh                  2026-06-23T23:34:22Z
+assignmetadata.mutations.gatekeeper.sh               2026-06-23T23:34:22Z
+configpodstatuses.status.gatekeeper.sh               2026-06-23T23:34:22Z
+configs.config.gatekeeper.sh                         2026-06-23T23:34:22Z
+connectionpodstatuses.status.gatekeeper.sh           2026-06-23T23:34:22Z
+connections.connection.gatekeeper.sh                 2026-06-23T23:34:22Z
+constraintpodstatuses.status.gatekeeper.sh           2026-06-23T23:34:23Z
+constrainttemplatepodstatuses.status.gatekeeper.sh   2026-06-23T23:34:23Z
+constrainttemplates.templates.gatekeeper.sh          2026-06-23T23:34:23Z
+expansiontemplate.expansion.gatekeeper.sh            2026-06-23T23:34:23Z
+expansiontemplatepodstatuses.status.gatekeeper.sh    2026-06-23T23:34:23Z
+k8srequiredlabels.constraints.gatekeeper.sh          2026-06-23T23:43:28Z
+modifyset.mutations.gatekeeper.sh                    2026-06-23T23:34:23Z
+mutatorpodstatuses.status.gatekeeper.sh              2026-06-23T23:34:23Z
+providerpodstatuses.status.gatekeeper.sh             2026-06-23T23:34:23Z
+providers.externaldata.gatekeeper.sh                 2026-06-23T23:34:23Z
+syncsets.syncset.gatekeeper.sh                       2026-06-23T23:34:24Z
+rhisland@srv-ks-master:~$ kubectl get validatingwebhookconfiguration
+NAME                                          WEBHOOKS   AGE
+gatekeeper-validating-webhook-configuration   2          44h
+metallb-webhook-configuration                 6          6d22h
+rhisland@srv-ks-master:~$

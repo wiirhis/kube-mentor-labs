@@ -1,0 +1,26 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: allow-only-dockerhub-images
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: only-docker-io-images
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+      validate:
+        message: "Only images from docker.io are allowed."
+        foreach:
+          - list: "request.object.spec.containers"
+            deny:
+              conditions:
+                any:
+                  - key: "{{ element.image }}"
+                    operator: AnyNotIn
+                    value:
+                      - "docker.io/*"
+                      - "nginx"

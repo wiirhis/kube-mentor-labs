@@ -1,0 +1,19 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: require-owner-label
+spec:
+  evaluation:
+    background:
+      enabled: true
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validationActions:
+    - Deny
+  validations:
+    - expression: "has(object.metadata.labels) && has(object.metadata.labels.owner) && object.metadata.labels.owner != ''"
+      message: "Pod must have label owner with a non-empty value."

@@ -1,0 +1,22 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-company-info-configmap
+spec:
+  rules:
+    - name: create-company-info
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: company-info
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          data:
+            company: FinSecure
+            environment: production
